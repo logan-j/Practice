@@ -1,7 +1,22 @@
 #find the most frequent integer in an array
 
-#input integer array
-arr = [1, 1, 2, 2, 2, 2,  1, 3, 4, 5, 5, 5]
+#uses commandline arguments for input file and json to process
+import sys, json
+
+#reads first argument as input file in json list format
+#basic error handling
+try:
+    with open(sys.argv[1]) as f:
+        arr = json.load(f)
+except IOError:
+    print "File Not Found!"
+    exit()
+except IndexError:
+    print "Input File Argument!"
+    exit()
+except ValueError:
+    print "Check Input File Formatting!"
+    exit()
 
 #dictionary for storing results
 numbers = {}
